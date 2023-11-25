@@ -18,3 +18,16 @@ p{
   
     
 }
+a{
+    
+    color: steelblue;
+}rgb(0, 0, 0)
+a:visited{
+    color: blueviolet;
+}
+a:hover, a:focus{
+    color: hsl(207, 44%, 49%, 0.8);
+}
+a:active{
+    color: red;
+}      
