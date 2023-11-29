@@ -1,34 +1,122 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
     font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
+    min-height: 200vh;
 
 }
-.columns{
-    columns: 4 250px;
-    column-rule: 3px solid black;
-    column-gap: 3rem;
+
+.outer-container{
+    position: relative;
+    height: 85vh;
+    width: 75vw;
+    border: 2px dashed #333;
+    margin: 40px auto;
+}
+.inner-container{
+    width: 40vw;;
+    height: 50vh;
+    border: 2px solid #00f;
+    margin: 200px auto;
+  
+}
+.box{
+  
+    width: 150px;
+    height: 150px;
+    color: #fff;
+    padding: 1rem;
+}
+.absolute{
+    background-color: #00f;
+    position: absolute;
+    top: 0;
+    left: -10000px;;
+    z-index: 1;
+}
+.relative{
+    background-color: red;
+    position: relative;
+    top: 300px;
+    left: 100px;
+}
+
+.fixed{
+    background-color: green;
+    position: fixed;
+    top: 100px;
+}
+
+.sticky{
+    background-color: black;
+    position: sticky;
+    top: 0;
 
 }
-.columns p {
-    margin-top: 0;
+
+
+/* Remember, how to make things Dissappear! */
+
+/* ----------------------------------------- */
+html{
+    scroll-behavior: smooth;
 }
-.columns h2 {
-    margin-top: 0;
-    background-color: #333;
-    color: white;
-    padding: 2rem;
-    break-inside: avoid;
+
+
+
+section{
+    height: 100vh;
+   
+}
+
+.blue{
+    background-color: blue;
+}
+.red{
+    background-color: red;
+}
+.green{
+    background-color: green;
+}
+
+header, footer {
+    color: #ffffff;
+    text-align: center;
+    height: 100px;
+
     
 }
-.columns .quote {
-    margin-top: 2rem;
-    font-size: 3rem;
-    text-align: center;
-    color: #333;
-    column-span: all;
+
+header {
+    position: sticky;
+    top: 0;
+    font-size: 5rem;
 }
-.nowrap{
-    white-space: nowrap;
+
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: black;
+    width: 100%;
+    font-size: 3rem;
+}
+a:visited{
+    color: #fff;
+}
+.social{
+    background-color: royalblue;
+    color: #fff;
+    font-size: inherit;
+    position: fixed;
+    padding: 1rem;
+    top: 30%;
+    left: 0;
+    z-index: 1;
 }
