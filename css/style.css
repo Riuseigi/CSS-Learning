@@ -12,7 +12,9 @@ body {
   font: 1.5rem "Nunito", sans-serif;
   min-height: 100vh;
 }
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+html{
+  scroll-behavior: smooth;
+}
 
 /* || RESET */
 * {
@@ -20,6 +22,21 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* ||Utitlity Classes */
+.nowrap{
+  white-space: nowrap;
+}
+
+
+
+/* ||Utitlity Classes */
+
+
 
 /* || GENERAL STYLES */
 body {
@@ -33,12 +50,7 @@ body {
   flex-direction: column;
 }
 
-header, nav, main , footer{
-  display: grid;
-  grid-template-columns: 100%;
-  place-content: center;
-  text-align: center;
-}
+
 
 header, footer {
   position: sticky;
@@ -52,71 +64,135 @@ header{
 }
 main{
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
 }
 footer{
   bottom: 0;
 }
+
+
 nav{
   background-color: #cbd5e1;
-  color: black;
+  font-weight: bolder;
+  display: flex;
+  justify-content: space-evenly;
   padding: 0.5rem;
   border-bottom: 2px solid black;
 }
+nav a, nav a:visited{
+  color: black;
+  text-decoration: none;}
+
+nav a:hover, nav a:focus{
+  color: hsl(0, 0%, 20%, 0.6);
+}
+/* PROFILE CARD*/
+.card{
+  scroll-margin-top: 8rem;
+  width: min(100%, 350px);
+  background-color: #cbd5e1;
+  border: 2px solid #000;
+  border-radius: 15px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card figure{
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.card img {
+  border: 5px double #333;
+  border-radius: 50%;
+}
+.card figcaption{
+  font-weight: bolder;
+  font-size: 1.5rem;
+  margin: 1rem;
+  text-align: center;
+}
+
+
+/* PROFILE CARD*/
+
+
 
 /* SMALL  MEDIA SCREEN*/
 @media screen and (min-width: 576px) {
-  body {
-    background-color: green;
-    background-image: radial-gradient(green, yellow);
-
+  main{
+    justify-content: center;
+    flex-flow: row wrap;
+    padding: 1rem;
   }
-  nav {
-    display: none;
+  .card{
+    width: min(100%, 400px) ;
+  }
+  .card:last-child
+  {
+    order: -1;
   }
 }
 
 /* Medium  MEDIA SCREEN*/
 @media screen and (min-width: 768px) {
-  body {
-    background-color: gold;
-    background-image: radial-gradient(whitesmoke, gold);
-
+  nav{
+    display: none;
   }
-  
-}
+  .card{
+    width: min(100%, 325px) ;
+  }
+  .card figure {
+    flex-flow: column-reverse;
+  }
+  /* .card figcaption{
+    margin: 0.1em;
+  } */
+  .card p {
+    margin-top: 1rem;
+  }
 
 /* Large  MEDIA SCREEN*/
 @media screen and (min-width: 992px) {
-  body {
-    background-color: firebrick;
-    background-image: radial-gradient(whitesmoke, firebrick);
-
+  .card{
+    width: min(100%, 400px) ;
+  }
+  .card:nth-child(2){
+    order: -1;
   }
   
 }
 
 /* XL  MEDIA SCREEN*/
 @media screen and (min-width: 1200px) {
-  body {
-    background-color: rebeccapurple;
-    background-image: radial-gradient(whitesmoke, rebeccapurple);
-
+  .card{
+    width: min(calc(33% - 1rem), 500px) ;
   }
   
 }
 
-/* mobile device landscape MEDIA SCREEN*/
+/* mobile device landscape */
 @media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
-  body {
-    background-color: dodgerblue;
-    background-image: radial-gradient(whitesmoke, dodgerblue);
-
-  }
-  h1,h2{
+  h1 {
     font-size: 1.5rem;
   }
-  nav{
-    display: none;
+  nav{display: none;}
+  main{
+    flex-flow:  row nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
   }
-  
+  .card{
+    width: min(calc(33% - 0.25rem), 200px) ;
+  }
+  .card figcaption, .card p{
+    font-size: 1.25rem;
+  }
+}
 }
