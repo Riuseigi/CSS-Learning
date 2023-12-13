@@ -35,12 +35,13 @@ img{
   --DARK-COLOR: #000;
   /* FONT */
   --FF: "Nunito", sans-serif;
-  --FS: 1.5rem;
+  --FS: clamp(1.75rem, 3vh, 2.25rem);
+  --FS-SM: clamp(1.25rem, 2vh, 1.5rem);
   --FF-XL: 3rem;
 
 
   /* GENERAL */
-  --PADDING: 0.5rem;
+  --PADDING: 0.5em;
   --SHADOWS: 0 6px 5px -5px var(--DARK-COLOR);
   --BORDERS:2px solid var(--DARK-COLOR);
 
@@ -49,14 +50,14 @@ img{
   --SQUARE-SIZE: max(150px, 20vw);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root{
     --BGCOLOR: #1E293B;
     --ALT-COLOR: #475569;
     --RADIAL-COLOR: gray;
     --LIGHT-COLOR: whitesmoke;
     --DARK-COLOR: whitesmoke;
-    --SQUARE-BGCOLOR: rgb(202, 174, 202);
+    --SQUARE-BGCOLOR: rgba(182, 93, 182, 0.733);
   }
 }
 
@@ -100,20 +101,66 @@ header{
   top: 0;
   color: red;
 }
+
+
+
 main{
   flex-grow: 1;
+  padding: var(--PADDING);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(100px, 300px));
+  gap: min(2vw, 20px);
+  
+  
+  /* display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+} */}
+main section{
+  flex-grow: 1;
+  padding: var(--PADDING);
 
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-flow: row wrap;
-  gap: min(4vw, 15px)
+}
+main aside{
+  background-color: hsla(0, 7%, 28%, 0.8);
+  color: var(--LIGHT-COLOR);
+  font-size: var(--FS-SM);
+  font-style: italic;
+  padding: var(--PADDING);
+}
+.content {
+  margin-top: 20px;
+}
+
+
+main p{
+  font-size: var(--FS);
 }
 footer{
   bottom: 0;
 }
 
+a:any-link{
+  color: firebrick;
+}
+a:hover, a:focus{
+  filter: brightness(150%);
+}
+
+.tooltip{
+  border-bottom: 1px dashed orange;
+  position: relative;
+}
+.tooltip:hover::before{
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -20px;
+  white-space: nowrap;
+  border-radius: 15px;
+  background-color: var(--DARK-COLOR);
+  padding: var(--PADDING);
+  color: var(--LIGHT-COLOR);
+}
 
 /* FEATURES */
 .square--highlight{
@@ -123,8 +170,8 @@ footer{
 
 .square{
   background-color: var(--SQUARE-BGCOLOR);
-  width: var(--SQUARE-SIZE);
-  height: var(--SQUARE-SIZE);
+  /* width: var(--SQUARE-SIZE);
+  height: var(--SQUARE-SIZE); */
   border: var(--BORDERS);
   border-radius: 15px;
   display: grid;
@@ -140,9 +187,7 @@ footer{
 nav{
   background-color: var(--LIGHT-COLOR);
   font-weight: bolder;
-  display: flex;
-  justify-content: space-evenly;
-  padding: var(--PADDING);
+ 
   border-bottom: var(--BORDERS);
   box-shadow: var(--SHADOWS);
 }
@@ -224,4 +269,24 @@ nav :is(a:hover,a:focus){
   border-color: red;
 
 
+}
+
+
+
+
+
+
+
+@media screen and (min-width:576px){
+  main {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+
+  main section{
+    width: calc(70%-5px);
+  }
+  main aside{
+    width: calc(30%-5px);
+  }
 }
