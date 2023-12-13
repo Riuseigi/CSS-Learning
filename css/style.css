@@ -8,10 +8,7 @@
 }
 
 /* || GENERAL STYLES */
-body {
-  font: 1.5rem "Nunito", sans-serif;
-  min-height: 100vh;
-}
+
 html{
   scroll-behavior: smooth;
 }
@@ -27,6 +24,46 @@ img{
   max-width: 100%;
   height: auto;
 }
+
+/* Variables */
+:root{
+  /* Color */
+  --BGCOLOR: #475569;
+  --ALT-COLOR: #1E293B;
+  --RADIAL-COLOR: whitesmoke;
+  --LIGHT-COLOR: whitesmoke;
+  --DARK-COLOR: #000;
+  /* FONT */
+  --FF: "Nunito", sans-serif;
+  --FS: 1.5rem;
+  --FF-XL: 3rem;
+
+
+  /* GENERAL */
+  --PADDING: 0.5rem;
+  --SHADOWS: 0 6px 5px -5px var(--DARK-COLOR);
+  --BORDERS:2px solid var(--DARK-COLOR);
+
+  /* SQUARE */
+  --SQUARE-BGCOLOR: papayawhip;
+  --SQUARE-SIZE: max(150px, 20vw);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root{
+    --BGCOLOR: #1E293B;
+    --ALT-COLOR: #475569;
+    --RADIAL-COLOR: gray;
+    --LIGHT-COLOR: whitesmoke;
+    --DARK-COLOR: whitesmoke;
+    --SQUARE-BGCOLOR: rgb(202, 174, 202);
+  }
+}
+
+/* Variables */
+
+
+
 /* ||Utitlity Classes */
 .nowrap{
   white-space: nowrap;
@@ -40,12 +77,12 @@ img{
 
 /* || GENERAL STYLES */
 body {
-  font: 1.5rem "Nunito", sans-serif;
+  font: var(--FS) "Nunito", sans-serif;
   min-height: 100vh;
   
 
-  background-color: #475569;
-  background-image: radial-gradient(whitesmoke, #475569);
+  background-color: var(--BGCOLOR);
+  background-image: radial-gradient(var(--RADIAL-COLOR), var(--BGCOLOR));
   display: flex;
   flex-direction: column;
 }
@@ -54,8 +91,8 @@ body {
 
 :is(header, footer) {
   position: sticky;
-  background-color: #1e293b;
-  color: whitesmoke;
+  background-color: var(--BGCOLOR);
+  color: var(--LIGHT-COLOR);
   text-align: center;
 }
 
@@ -65,27 +102,52 @@ header{
 }
 main{
   flex-grow: 1;
+
+  padding: 10px 0;
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
+  flex-flow: row wrap;
+  gap: min(4vw, 15px)
 }
 footer{
   bottom: 0;
 }
 
 
+/* FEATURES */
+.square--highlight{
+  --SQUARE-BGCOLOR: cornflowerblue;
+}
+
+
+.square{
+  background-color: var(--SQUARE-BGCOLOR);
+  width: var(--SQUARE-SIZE);
+  height: var(--SQUARE-SIZE);
+  border: var(--BORDERS);
+  border-radius: 15px;
+  display: grid;
+  place-content: center;
+  font-size: var(--FF-XL);
+  box-shadow: var(--SHADOWS);
+
+
+}
+
+
+
 nav{
-  background-color: #cbd5e1;
+  background-color: var(--LIGHT-COLOR);
   font-weight: bolder;
   display: flex;
   justify-content: space-evenly;
-  padding: 0.5rem;
-  border-bottom: 2px solid black;
+  padding: var(--PADDING);
+  border-bottom: var(--BORDERS);
+  box-shadow: var(--SHADOWS);
 }
 nav a:link, nav a:visited{
-  color: black;
+  color: var(--DARK-COLOR);
   text-decoration: none;}
 nav a:active{
   color: red;
@@ -100,7 +162,7 @@ nav :is(a:hover,a:focus){
   background-color: #cbd5e1;
   border: 2px solid #000;
   border-radius: 15px;
-  padding: 1.5rem;
+  padding: var(--FS);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,7 +189,7 @@ nav :is(a:hover,a:focus){
 
 .card figcaption{
   font-weight: bolder;
-  font-size: 1.5rem;
+  font-size: var(--FS);
   margin: 1rem;
   text-align: center;
 }
@@ -162,76 +224,4 @@ nav :is(a:hover,a:focus){
   border-color: red;
 
 
-/* SMALL  MEDIA SCREEN*/
-@media screen and (min-width: 576px) {
-  main{
-    justify-content: center;
-    flex-flow: row wrap;
-    padding: 1rem;
-  }
-  .card{
-    width: min(100%, 400px) ;
-  }
-  .card:last-child
-  {
-    order: -1;
-  }
-}
-
-/* Medium  MEDIA SCREEN*/
-@media screen and (min-width: 768px) {
-  nav{
-    display: none;
-  }
-  .card{
-    width: min(100%, 325px) ;
-  }
-  .card figure {
-    flex-flow: column-reverse;
-  }
-  /* .card figcaption{
-    margin: 0.1em;
-  } */
-  .card p {
-    margin-top: 1rem;
-  }
-
-/* Large  MEDIA SCREEN*/
-@media screen and (min-width: 992px) {
-  .card{
-    width: min(100%, 400px) ;
-  }
-  .card:nth-child(2){
-    order: -1;
-  }
-  
-}
-
-/* XL  MEDIA SCREEN*/
-@media screen and (min-width: 1200px) {
-  .card{
-    width: min(calc(33% - 1rem), 500px) ;
-  }
-  
-}
-
-/* mobile device landscape */
-@media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
-  h1 {
-    font-size: 1.5rem;
-  }
-  nav{display: none;}
-  main{
-    flex-flow:  row nowrap;
-    justify-content: space-evenly;
-    align-items: stretch;
-  }
-  .card{
-    width: min(calc(33% - 0.25rem), 200px) ;
-  }
-  .card figcaption, .card p{
-    font-size: 1.25rem;
-  }
-}
-}
 }
